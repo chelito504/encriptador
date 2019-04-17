@@ -1,0 +1,17 @@
+import sys
+from Encriptando import *
+
+class EncriptarAES(QtGui.QDialog):
+	def __init__(self, parent=None):
+		QtGui.QWidget.__init__(self, parent)
+		self.uiEncAES = Ui_DialogEncriptando()
+		self.uiEncAES.setupUi(self)
+		QtCore.QObject.connect(self.uiEncAES.pushButtonCancelarEncriptando, QtCore.SIGNAL('clicked()'), self.salirEncAES)
+	def salirEncAES(self):
+		sys.exit()
+
+if __name__ == "__main__":
+	app = QtGui.QApplication(sys.argv)
+	myapp = EncriptarAES()
+	myapp.show()
+	sys.exit(app.exec_())
