@@ -14,6 +14,7 @@ class Principal(QtGui.QDialog):
 		QtCore.QObject.connect(self.uiPrincipal.toolButtonDestino, QtCore.SIGNAL('clicked()'), self.abrirBusqueda)
 		QtCore.QObject.connect(self.uiPrincipal.pushButtonEncriptarAES, QtCore.SIGNAL('clicked()'), self.abrirEncriptamientoAES)
 		QtCore.QObject.connect(self.uiPrincipal.pushButton, QtCore.SIGNAL('clicked()'), self.salirPrincipal)
+		QtCore.QObject.connect(self.uiPrincipal.pushButtonDesencriptarAES, QtCore.SIGNAL('clicked()'), self.abrirDesencriptamientoAES)
 	def abrirEncriptamientoAES(self):
 		self.objectContra = PedirCotrasenaParaEncriptar()
 		if (path.exists(self.uiPrincipal.lineEditOrigen.text()) and path.exists(self.uiPrincipal.lineEditDestino.text())):
@@ -21,8 +22,13 @@ class Principal(QtGui.QDialog):
 			self.uiPrincipal.lineEditOrigen.clear()
 			self.uiPrincipal.lineEditDestino.clear()
 			self.uiPrincipal.label_3.clear()
+		elif(path.exists(self.uiPrincipal.lineEditOrigen.text()) and len(self.uiPrincipal.lineEditDestino.text())==0):
+			self.uiPrincipal.lineEditDestino.setText(self.uiPrincipal.lineEditOrigen.text())
 		else:
 			self.uiPrincipal.label_3.setText('ERROR: comprobar ruta/s')
+	def abrirDesencriptamientoAES(self):
+		self.objectContraDes = PedirCotrasenaParaDesencriptar()
+
 	def abrirBusqueda(self):
 		self.objectBusqueda = Busqueda()
 		self.objectBusqueda.mostrarBusqueda()
@@ -38,6 +44,11 @@ class PedirCotrasenaParaEncriptar:
 	def mostrarContrasenaParaEncriptar(self):
 		self.objectPedirContrasenaParaEncriptar = ContrasenaEnc()
 		self.objectPedirContrasenaParaEncriptar.show()
+
+class PedirContrasenaParaDesencriptar:
+	def mostrarContrasenaParaDesencriptar(self):
+		self.objectPedirContrasenaParaDesencriptar = ContrasenaDes()
+		self.objectPedirContrasenaParaDesencriptar.show()
 
 if __name__ == "__main__":
 	app = QtGui.QApplication(sys.argv)
