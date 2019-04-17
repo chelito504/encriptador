@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 import sys
 import os.path as path
@@ -31,10 +32,14 @@ class Principal(QtGui.QDialog):
 		sys.exit()
 	def abrirEncriptarAes(self):
 		self.objectEncriptamiento1 = EncriptamientoAES()
-		if self.comprobarExistenciaOrigen==True and self.comprobarExistenciaDestino==True:
-			self.objectEncriptamiento1.mostrarEncriptamientoAES()
+		if (self.comprobarExistenciaOrigen==True and self.comprobarExistenciaDestino==False):
+			self.uiPrincipal.label_3.setText('ERROR: verificar destino')
+		elif (self.comprobarExistenciaOrigen==False and self.comprobarExistenciaDestino==True):
+			self.uiPrincipal.label_3.setText('ERROR: verificar origen')
+		elif (self.comprobarExistenciaOrigen==False and self.comprobarExistenciaDestino==False):
+			self.uiPrincipal.label_3.setText('ERROR: verificar ambas rutas')
 		else:
-			self.uiPrincipal.label_3.setText('ERROR: path inexistente')
+			self.objectEncriptamiento1.mostrarEncriptamientoAES()
 class Busqueda:
 	def mostrarBusqueda(self):
 		self.objectBusquedaOpen = Busqueda2()
