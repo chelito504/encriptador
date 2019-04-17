@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
+import os.path as path
 from mainEncript import *
 from BusquedaOpen import *
 from EncriptarAesOpen import *
@@ -13,34 +14,33 @@ class Principal(QtGui.QDialog):
 		QtCore.QObject.connect(self.uiPrincipal.toolButtonDestino, QtCore.SIGNAL('clicked()'), self.abrirBusqueda)
 		QtCore.QObject.connect(self.uiPrincipal.pushButtonEncriptarAES, QtCore.SIGNAL('clicked()'), self.abrirEncriptarAes)
 		QtCore.QObject.connect(self.uiPrincipal.pushButton, QtCore.SIGNAL('clicked()'), self.salirPrincipal)
-	def comprobarOrigen(self):
-		if self.uiPrincipal.lineEditOrigen.isEmpty():
-			return False
-		else:
+	def comprobarExistenciaOrigen(self):
+		if path.exists(self.uiPrincipal.lineEditOrigen.text()):
 			return True
-	def comprobarDestino(self):
-		if self.uiPrincipal.lineEditDestino.isEmpty():
-			return False
 		else:
+			return False
+	def comprobarExistenciaDestino(self):
+		if path.exists(self.uiPrincipal.lineEditDestino.text()):
 			return True
+		else:
+			return False
 	def abrirBusqueda(self):
-		self.vBusqueda = Busqueda()
-		self.vBusqueda.mostrar()
+		self.objectBusqueda = Busqueda()
+		self.objectBusqueda.mostrarBusqueda()
 	def salirPrincipal(self):
 		sys.exit()
 	def abrirEncriptarAes(self):
-		self.vEncriptamiento1 = Encriptamiento1()
-		if self.comprobarOrigen==True and self.comprobarDestino==True:
-			self.vEncriptamiento1.mostrar()
+		self.objectEncriptamiento1 = EncriptamientoAES()
+		if self.comprobarExistenciaOrigen==True and self.comprobarExistenciaDestino==True:
+			self.objectEncriptamiento1.mostrarEncriptamientoAES()
 		else:
-			self.uiPrincipal.label_3.setText('ERROR: origen, destino u origen y destino vacías')
-
+			self.uiPrincipal.label_3.setText('ERROR: path inexistente')
 class Busqueda:
-	def mostrar(self):
+	def mostrarBusqueda(self):
 		self.objectBusquedaOpen = Busqueda2()
 		self.objectBusquedaOpen.show()
-class Encriptamiento1:
-	def mostrar(self):
+class EncriptamientoAES:
+	def mostrarEncriptamientoAES(self):
 		self.objectEncriptarAesOpen = EncriptarAES()
 		self.objectEncriptarAesOpen.show()
 
