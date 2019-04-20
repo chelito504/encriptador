@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainEncript.ui'
 #
-# Created: Mon Apr 15 22:09:12 2019
+# Created: Wed Apr 17 21:37:42 2019
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(400, 300)
+        Dialog.resize(759, 547)
         Dialog.setStyleSheet(_fromUtf8("background-color: rgb(152, 185, 255);"))
         self.toolButtonOrigen = QtGui.QToolButton(Dialog)
         self.toolButtonOrigen.setGeometry(QtCore.QRect(260, 40, 25, 19))
@@ -55,7 +55,7 @@ class Ui_Dialog(object):
         self.pushButtonEncriptarAES.setStyleSheet(_fromUtf8("background-color: rgb(255, 253, 229);"))
         self.pushButtonEncriptarAES.setObjectName(_fromUtf8("pushButtonEncriptarAES"))
         self.pushButtonEncriptarOtro = QtGui.QPushButton(Dialog)
-        self.pushButtonEncriptarOtro.setGeometry(QtCore.QRect(200, 130, 121, 23))
+        self.pushButtonEncriptarOtro.setGeometry(QtCore.QRect(50, 230, 111, 23))
         self.pushButtonEncriptarOtro.setStyleSheet(_fromUtf8("background-color: rgb(255, 253, 229);"))
         self.pushButtonEncriptarOtro.setObjectName(_fromUtf8("pushButtonEncriptarOtro"))
         self.pushButtonDesencriptarAES = QtGui.QPushButton(Dialog)
@@ -63,17 +63,31 @@ class Ui_Dialog(object):
         self.pushButtonDesencriptarAES.setStyleSheet(_fromUtf8("background-color: rgb(255, 253, 229);"))
         self.pushButtonDesencriptarAES.setObjectName(_fromUtf8("pushButtonDesencriptarAES"))
         self.pushButtonDesencriptarOtro = QtGui.QPushButton(Dialog)
-        self.pushButtonDesencriptarOtro.setGeometry(QtCore.QRect(200, 180, 121, 23))
+        self.pushButtonDesencriptarOtro.setGeometry(QtCore.QRect(50, 280, 111, 23))
         self.pushButtonDesencriptarOtro.setStyleSheet(_fromUtf8("background-color: rgb(255, 253, 229);"))
         self.pushButtonDesencriptarOtro.setObjectName(_fromUtf8("pushButtonDesencriptarOtro"))
         self.pushButton = QtGui.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(230, 250, 75, 23))
+        self.pushButton.setGeometry(QtCore.QRect(50, 330, 75, 23))
         self.pushButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 253, 229);"))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         self.label_3 = QtGui.QLabel(Dialog)
-        self.label_3.setGeometry(QtCore.QRect(30, 250, 181, 31))
+        self.label_3.setGeometry(QtCore.QRect(30, 380, 261, 81))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Segoe UI Black"))
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
         self.label_3.setText(_fromUtf8(""))
         self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.treeWidgetOrigen = QtGui.QTreeWidget(Dialog)
+        self.treeWidgetOrigen.setGeometry(QtCore.QRect(390, 40, 291, 231))
+        self.treeWidgetOrigen.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);"))
+        self.treeWidgetOrigen.setObjectName(_fromUtf8("treeWidgetOrigen"))
+        self.treeWidgetDestino = QtGui.QTreeWidget(Dialog)
+        self.treeWidgetDestino.setGeometry(QtCore.QRect(390, 290, 291, 231))
+        self.treeWidgetDestino.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);"))
+        self.treeWidgetDestino.setObjectName(_fromUtf8("treeWidgetDestino"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -89,4 +103,13 @@ class Ui_Dialog(object):
         self.pushButtonDesencriptarAES.setText(_translate("Dialog", "Desencriptar AES-256", None))
         self.pushButtonDesencriptarOtro.setText(_translate("Dialog", "Desencriptar otro", None))
         self.pushButton.setText(_translate("Dialog", "Salir", None))
+        self.treeWidgetOrigen.headerItem().setText(0, _translate("Dialog", "Nombre", None))
+        self.treeWidgetOrigen.headerItem().setText(1, _translate("Dialog", "Fecha modificación", None))
+        self.treeWidgetOrigen.headerItem().setText(2, _translate("Dialog", "Tipo", None))
+        self.treeWidgetOrigen.headerItem().setText(3, _translate("Dialog", "Tamaño", None))
+        self.treeWidgetDestino.headerItem().setText(0, _translate("Dialog", "Nombre", None))
+        self.treeWidgetDestino.headerItem().setText(1, _translate("Dialog", "Fecha modificación", None))
+        self.treeWidgetDestino.headerItem().setText(2, _translate("Dialog", "Tipo", None))
+        self.treeWidgetDestino.headerItem().setText(3, _translate("Dialog", "Tamaño", None))
+
 
